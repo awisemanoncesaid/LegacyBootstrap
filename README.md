@@ -1,6 +1,6 @@
 # COBOL x Copilot Project
 
-## Modernizing a Cobol accounting system to a Node.js application using GitHub Copilot
+## Modernizing a Cobol accounting system to a Python application using GitHub Copilot
 
 ### Table of contents
 
