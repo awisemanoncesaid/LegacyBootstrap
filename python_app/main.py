@@ -16,19 +16,19 @@ def main():
         choice = input("Enter your choice (1-4): ").strip()
 
         if choice == "1":
-            print(f"Current balance: {account.get_balance():.2f}")
+            print(f"Current balance: {account.get_balance():09.2f}")
         elif choice == "2":
             try:
-                amount = float(input("Enter amount to credit: "))
+                amount = float(input("Enter credit amount: "))
                 ops.credit(amount)
-                print(f"Amount credited. New balance: {account.get_balance():.2f}")
+                print(f"Amount credited. New balance: {account.get_balance():09.2f}")
             except ValueError:
                 print("Invalid amount.")
         elif choice == "3":
             try:
-                amount = float(input("Enter amount to debit: "))
+                amount = float(input("Enter debit amount: "))
                 if ops.debit(amount):
-                    print(f"Amount debited. New balance: {account.get_balance():.2f}")
+                    print(f"Amount debited. New balance: {account.get_balance():09.2f}")
                 else:
                     print("Insufficient funds for this debit.")
             except ValueError:
@@ -37,7 +37,7 @@ def main():
             print("Exiting the program. Goodbye!")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
+            print("Invalid choice, please select 1-4.")
 
 if __name__ == "__main__":
     main()

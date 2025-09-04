@@ -1,7 +1,7 @@
 import pexpect
 import os
 
-COBOL_BINARY = os.path.abspath("../modernize-legacy-cobol-app-main/accountsystem")
+EXECUTABLE = os.path.abspath("/usr/bin/python3 ../python_app/main.py")
 PROMPT_MESSAGE = r"Enter your choice \(1-4\):"
 EXIT_MESSAGE = "Exiting the program. Goodbye!"
 
@@ -12,7 +12,7 @@ class TestDataProgram:
     """
 
     def test_read_initial_balance(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("1")
         child.expect(PROMPT_MESSAGE, timeout=5)
@@ -26,7 +26,7 @@ class TestOperationsProgram:
     """
 
     def test_credit_valid_amount(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("2")
         child.expect("Enter credit amount:", timeout=5)
@@ -37,7 +37,7 @@ class TestOperationsProgram:
         child.expect(EXIT_MESSAGE, timeout=5)
 
     def test_credit_zero_amount(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("2")
         child.expect("Enter credit amount:", timeout=5)
@@ -48,7 +48,7 @@ class TestOperationsProgram:
         child.expect(EXIT_MESSAGE, timeout=5)
 
     def test_debit_valid_amount(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("3")
         child.expect("Enter debit amount:", timeout=5)
@@ -59,7 +59,7 @@ class TestOperationsProgram:
         child.expect(EXIT_MESSAGE, timeout=5)
 
     def test_debit_greater_than_balance(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("3")
         child.expect("Enter debit amount:", timeout=5)
@@ -70,7 +70,7 @@ class TestOperationsProgram:
         child.expect(EXIT_MESSAGE, timeout=5)
 
     def test_debit_zero_amount(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("3")
         child.expect("Enter debit amount:", timeout=5)
@@ -86,7 +86,7 @@ class TestMainProgram:
     """
 
     def test_exit_application(self):
-        child = pexpect.spawn(COBOL_BINARY, encoding='utf-8')
+        child = pexpect.spawn(EXECUTABLE, encoding='utf-8')
         child.expect(PROMPT_MESSAGE, timeout=5)
         child.sendline("4")
         child.expect(EXIT_MESSAGE, timeout=5)
